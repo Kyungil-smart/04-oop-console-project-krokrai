@@ -13,7 +13,7 @@ class Expedition : Scene
 
     public override void Start()
     {
-        
+        screen.RenderRatengle(Screen.ScreenPosition.RIGHTCENTER, destination, true);
     }
 
     public override void Update()

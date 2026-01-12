@@ -24,20 +24,9 @@ class WareHouse
         switch(resource)
         {
             case Resource.GOLD:
-                if (gold - num >= 0)
-                {
-                    gold -= num;
-                    Observer.SelecetInvoke("Gold");
-                    return true;
-                }
-                return false;
+                return gold - num >= 0 ? true : false;
             case Resource.FOOD:
-                if (gold - num >= 0)
-                {
-                    gold -= num;
-                    Observer.SelecetInvoke("Gold");
-                    return true;
-                }
+
                 return false;
             case Resource.WOOD:
 
@@ -46,18 +35,49 @@ class WareHouse
 
                 break;
             case Resource.ORE:
-
-                break;
+                return ore - num >= 0 ? true : false;
             case Resource.SPECIALRESOURCE:
 
                 break;
             case Resource.HUMANRESOURCES:
-
-                break;
+                return humanResources - num >= 0 ? true : false;
             default:
                 Debug.AddLog("정의되지 않은 enum 값에 접근했습니다.", true);
                 return false;
         }
         return false;
+    }
+
+    public void UseResource(Resource resource, int num)
+    {
+        switch (resource)
+        {
+            case Resource.GOLD:
+                gold -= num;
+                Observer.SelecetInvoke("Gold");
+                break;
+            case Resource.FOOD:
+                break;
+            case Resource.WOOD:
+
+                break;
+            case Resource.STONE:
+
+                break;
+            case Resource.ORE:
+                ore -= num;
+                Observer.SelecetInvoke("Ore");
+                break;
+            case Resource.SPECIALRESOURCE:
+
+                break;
+            case Resource.HUMANRESOURCES:
+                humanResources -= num;
+                Observer.SelecetInvoke("humanResources");
+                break;
+            default:
+                Debug.AddLog("정의되지 않은 enum 값에 접근했습니다.", true);
+                break;
+        }
     }
 }

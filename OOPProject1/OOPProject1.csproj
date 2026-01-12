@@ -44,7 +44,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Manager\InputManager.cs" />
+    <Compile Include="Scene\Army.cs" />
     <Compile Include="Scene\DominionScene.cs" />
+    <Compile Include="Scene\Expedition.cs" />
     <Compile Include="Scene\GameScene.cs" />
     <Compile Include="Screen.cs" />
     <Compile Include="Util\Debug.cs" />
@@ -58,6 +60,7 @@
     <Compile Include="Util\Position.cs" />
     <Compile Include="Util\StringUtils.cs" />
     <Compile Include="Vilige\Structure.cs" />
+    <Compile Include="Vilige\units.cs" />
     <Compile Include="Vilige\WareHouse.cs" />
   </ItemGroup>
   <ItemGroup>
