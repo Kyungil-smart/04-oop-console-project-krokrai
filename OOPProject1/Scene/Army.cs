@@ -33,6 +33,7 @@ class Army : Scene
         units[1] = new Knight("기사", 50, 0, 1, 5, 10);
 
         //일단... 작동 시켜야한다...
+        // 이 이전 모든 함수 재 작업 요망
         armys[0] = "종 류 ∴ 인 력 ∴ 광 물 ∴ 생산수 ∴ 전투력";
         for(int i = 1; i < armys.Length; i++)
         {
@@ -46,8 +47,7 @@ class Army : Scene
             conscript = 10;
             screen.RenderBasicMap();
             screen.RenderRatengle(Screen.ScreenPosition.RIGHTCENTER, destination, true);
-            screen.RenderRatengle(Screen.ScreenPosition.RIGHTTOP, armys);
-            screen.RenderRatengle(Screen.ScreenPosition.LEFTTOP, null,true);
+            screen.RenderRatengle(Screen.ScreenPosition.LEFTTOP, armys,true);
             Render();
         }
         

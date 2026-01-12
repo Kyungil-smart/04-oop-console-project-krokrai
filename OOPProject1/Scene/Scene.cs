@@ -10,6 +10,7 @@ abstract class Scene
     protected Screen screen = new Screen();
     protected string[] destination =
     {
+        "위치",
         "통계",
         "영지",
         "군대",
