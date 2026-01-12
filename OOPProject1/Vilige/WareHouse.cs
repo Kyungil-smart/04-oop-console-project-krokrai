@@ -60,6 +60,4 @@ class WareHouse
         }
         return false;
     }
-
-    
 }

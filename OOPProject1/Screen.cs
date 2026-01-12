@@ -102,39 +102,66 @@ class Screen
         {
             case ScreenPosition.LEFTCENTER:
                 p2 = new Pos(0, screenMaxHeight / 2 - p1.Y / 2);
-                Renderer(p1, p2, ref s);
+                if (isChoice)
+                    ChoiceRenderer(p1, p2, ref s);
+                else
+                    Renderer(p1, p2, ref s);
                 break;
             case ScreenPosition.LEFTTOP:
                 p2 = new Pos(0, 0);
-                Renderer(p1, p2, ref s);
+                if (isChoice)
+                    ChoiceRenderer(p1, p2, ref s);
+                else
+                    Renderer(p1, p2, ref s);
                 break;
             case ScreenPosition.LEFTBOTTOM:
                 p2 = new Pos(0, screenMaxHeight - p1.Y);
-                Renderer(p1, p2, ref s);
+                if (isChoice)
+                    ChoiceRenderer(p1, p2, ref s);
+                else
+                    Renderer(p1, p2, ref s);
                 break;
             case ScreenPosition.CENTER:
                 p2 = new Pos(screenMaxWidth / 2, screenMaxHeight / 2) - (p1 / 2);
-                Renderer(p1, p2, ref s);
+                if (isChoice)
+                    ChoiceRenderer(p1, p2, ref s);
+                else
+                    Renderer(p1, p2, ref s);
                 break;
             case ScreenPosition.CENTERTOP:
                 p2 = new Pos(screenMaxWidth / 2 - p1.X / 2, 0);
-                Renderer(p1, p2, ref s);
+                if (isChoice)
+                    ChoiceRenderer(p1, p2, ref s);
+                else
+                    Renderer(p1, p2, ref s);
                 break;
             case ScreenPosition.CENTERBOTTOM:
                 p2 = new Pos(screenMaxWidth / 2 - p1.X / 2, screenMaxHeight - p1.Y);
-                Renderer(p1, p2, ref s);
+                if (isChoice)
+                    ChoiceRenderer(p1, p2, ref s);
+                else
+                    Renderer(p1, p2, ref s);
                 break;
             case ScreenPosition.RIGHTCENTER:
                 p2 = new Pos(screenMaxWidth - p1.X, screenMaxHeight / 2 - p1.Y / 2);
-                Renderer(p1, p2, ref s);
+                if (isChoice)
+                    ChoiceRenderer(p1, p2, ref s);
+                else
+                    Renderer(p1, p2, ref s);
                 break;
             case ScreenPosition.RIGHTTOP:
                 p2 = new Pos(screenMaxWidth - p1.X, 0);
-                Renderer(p1, p2, ref s);
+                if (isChoice)
+                    ChoiceRenderer(p1, p2, ref s);
+                else
+                    Renderer(p1, p2, ref s);
                 break;
             case ScreenPosition.RIGHTBOTTOM:
                 p2 = new Pos(screenMaxWidth - p1.X, screenMaxHeight - p1.Y);
-                Renderer(p1, p2, ref s);
+                if (isChoice)
+                    ChoiceRenderer(p1, p2, ref s);
+                else
+                    Renderer(p1, p2, ref s);
                 break;
         }
     }
@@ -189,6 +216,46 @@ class Screen
                     Console.Write("　");
                 }
                 
+            }
+        }
+    }
+
+    void ChoiceRenderer(Pos p1, Pos p2, ref string[] s)
+    {
+        string a;
+        for (int i = 0; i < p1.Y; i++)
+        {
+            Console.SetCursorPosition(p2.X * 2, p2.Y + i);
+            for (int j = 0; j < p1.X; j++)
+            {
+                if (i == 0 || i == p1.Y - 1)
+                {
+                    if (j == 0 || j == p1.X - 1)
+                    {
+                        Console.Write("◎");
+                    }
+                    else
+                    {
+                        Console.Write("ㅡ");
+                    }
+                }
+                else if (i != 0 && (j == 0 || j == p1.X - 1))
+                {
+                    Console.Write("｜");
+                }
+                else if (j > 0)
+                {
+                    a = s[i - 1];
+                    if (CurruntIndex == i - 1)
+                        a[j - 1].ScreenPrinter(ConsoleColor.Green);
+                    else
+                        a[j - 1].ScreenPrinter();
+                }
+                else
+                {
+                    Console.Write("　");
+                }
+
             }
         }
     }

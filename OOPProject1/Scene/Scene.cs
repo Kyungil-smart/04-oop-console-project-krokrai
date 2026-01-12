@@ -7,7 +7,17 @@ using System.Threading.Tasks;
 
 abstract class Scene
 {
-    
+    protected string[] destination =
+    {
+        "통계",
+        "영지",
+        "군대",
+        "탐사",
+        "연구",
+        "알현",
+        "마감",
+    };
+
     protected bool isSceneFirstIn = true;
     /// <summary>
     /// Scene 최초 진입 시 호출될 함수

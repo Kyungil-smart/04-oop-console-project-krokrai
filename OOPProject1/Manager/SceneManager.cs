@@ -29,7 +29,7 @@ static class SceneManager
     static public void AddScene()
     {
         _Scenes.Add("MainMenu", new MainMenuScene());
-        _Scenes.Add("GameScene", new GameScene());
+        _Scenes.Add("GameScene", new StatisSticsScene());
     }
 
     public static void ChangeScene(Scene nextScene)

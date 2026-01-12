@@ -5,9 +5,9 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-class GameScene : Scene
+class StatisSticsScene : Scene
 {
-    public GameScene()
+    public StatisSticsScene()
     {
 
     }
@@ -26,12 +26,6 @@ class GameScene : Scene
         "인  력 ∴ "
     };
 
-    string[] destination =
-    {
-        "영지",
-        ""
-    };
-
     public override void Exit()
     {
         
@@ -47,7 +41,7 @@ class GameScene : Scene
             staticstics[i] = s.PadRight(11,'０');
         }
         screen.RenderRatengle(Screen.ScreenPosition.RIGHTTOP,staticstics);
-
+        screen.RenderRatengle(Screen.ScreenPosition.RIGHTCENTER, destination,true);
     }
 
     public override void Update()
