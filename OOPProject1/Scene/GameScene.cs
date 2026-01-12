@@ -16,6 +16,7 @@ class StatisSticsScene : Scene
 
     string[] staticstics = new string[] 
     {
+        "자 원 ∴ 소모량 ∴ 생산량 ∴ 구 매 ∴ 판 매",
         "금  화 ∴ " ,
         "식  량 ∴ ",
         "나  무 ∴ ",
@@ -43,7 +44,7 @@ class StatisSticsScene : Scene
         {
             screen.AddSelect(destination[i], null);
         }
-        screen.RenderRatengle(Screen.ScreenPosition.RIGHTTOP,staticstics);
+        screen.RenderRatengle(Screen.ScreenPosition.RIGHTTOP,staticstics, true);
         screen.RenderRatengle(Screen.ScreenPosition.RIGHTCENTER, destination,true);
     }
 

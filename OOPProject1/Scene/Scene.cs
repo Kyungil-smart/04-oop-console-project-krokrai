@@ -28,6 +28,7 @@ abstract class Scene
 
     /// <summary>
     /// Scene 유지되는 동안 반복될 함수
+    /// 메뉴 목록은 가장 나중 밑줄로 이동
     /// </summary>
     public abstract void Update();
 

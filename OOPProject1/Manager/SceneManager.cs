@@ -17,7 +17,7 @@ static class SceneManager
     {
         _Scenes = new Dictionary<string, Scene>();
         AddScene();
-        ChangeScene(_Scenes["Laboratory"]);
+        ChangeScene(_Scenes["DominionScene"]);
         //ChangeScene(_Scenes["MainMenu"]);
     }
 

@@ -8,7 +8,7 @@ class DominionScene : Scene
 {
     string[] list =
     {
-        "건물명 ∴ 소모량 ∴ 보유량",
+        "건물명 ∴ 필요량 ∴ 보유량",
         "농 장 ∴ ",
         "벌목장 ∴ ",
         "채석장 ∴ ",
@@ -28,8 +28,9 @@ class DominionScene : Scene
     public override void Start()
     {
         screen.RenderBasicMap();
-        screen.RenderRatengle(Screen.ScreenPosition.LEFTTOP,list);
+        screen.RenderRatengle(Screen.ScreenPosition.LEFTTOP,list,true);
         screen.RenderRatengle(Screen.ScreenPosition.RIGHTCENTER, destination, true);
+
     }
 
     void Select()

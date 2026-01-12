@@ -8,14 +8,12 @@ class Screen
     public const int screenMaxHeight = 30;
     public const int screenMaxWidth = 50;
 
-    string[] nn = new string[3];
-
     List<(string, Action)> selecte = new List<(string, Action)>();
     List<List<(string, Action)>> listSelecte = new List<List<(string, Action)>>();
 
     List<(string[], Pos, Pos)> listScreenStrings = new List<(string[], Pos, Pos)>();
 
-    public int CurruntIndex { get; private set; } = 0;
+    public int CurruntIndex { get; private set; } = 1;
     public int CurruntArrayIndex { get; private set; } = 0;
 
     public enum ScreenPosition
@@ -162,7 +160,7 @@ class Screen
         if (listSelecte.Count <= 0) return;
         CurruntArrayIndex++;
         if (CurruntArrayIndex >= listScreenStrings.Count) CurruntArrayIndex = 0;
-        CurruntIndex = 0;
+        CurruntIndex = 1;
         ChoiceRenderer(listScreenStrings[CurruntArrayIndex].Item2, listScreenStrings[CurruntArrayIndex].Item3, listScreenStrings[CurruntArrayIndex].Item1);
     }
 
@@ -173,7 +171,7 @@ class Screen
 
     public void SelecteUp()
     {
-        if(CurruntIndex == 0) return;
+        if(CurruntIndex == 1) return;
         CurruntIndex--;
         ChoiceRenderer(listScreenStrings[CurruntArrayIndex].Item2, listScreenStrings[CurruntArrayIndex].Item3, listScreenStrings[CurruntArrayIndex].Item1);
     }
