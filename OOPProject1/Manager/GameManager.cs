@@ -23,8 +23,9 @@ static class GameManager
         SceneManager.Start();
         while(true)
         {
-            
+            InputManager.InputTracker();
             SceneManager.Update();
+            
 
             FrameLoader();
         }

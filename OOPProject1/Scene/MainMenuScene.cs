@@ -4,16 +4,19 @@ namespace OOPProject1
 {
     class MainMenuScene : Scene
     {
+        Screen screen = new Screen();
+
+        public MainMenuScene()
+        {
+
+        }
+
         string[] Menus = new string[3]
         { 
             "게임 시작",
             "크레딧",
             "게임 종료"
         };
-        public MainMenuScene()
-        {
-
-        }
 
         public override void Start()
         {
@@ -27,14 +30,15 @@ namespace OOPProject1
 
         public override void Update()
         {
-            
+            screen.SelecteUp();
         }
 
         void Render()
         {
-            Screen.RenderBasicMap();
-            Screen.RenderRatengle(Screen.ScreenPosition.CENTER,Menus,false);
+            screen.RenderBasicMap();
+            screen.RenderRatengle(Screen.ScreenPosition.CENTER,Menus,false);
         }
+
         public override void Exit()
         {
 

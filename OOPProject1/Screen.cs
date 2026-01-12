@@ -5,17 +5,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-static class Screen
+class Screen
 {
     public const int screenMaxHeight = 30;
     public const int screenMaxWidth = 50;
+
+    List<(string, Action)> selecte = new List<(string, Action)>();
+    public int CurruntIndex { get; private set; } = 0;
 
     public enum ScreenPosition
     {
         LEFTCENTER, RIGHTCENTER, CENTERTOP, CENTERBOTTOM, CENTER, LEFTTOP, RIGHTTOP, LEFTBOTTOM, RIGHTBOTTOM
     }
 
-    static char[,] BasicScreen = new char[screenMaxHeight, screenMaxWidth]
+    char[,] BasicScreen = new char[screenMaxHeight, screenMaxWidth]
             {
                 { '◎','ㅡ','ㅡ','ㅡ','ㅡ','ㅡ','ㅡ','ㅡ','ㅡ','ㅡ','ㅡ','ㅡ','ㅡ','ㅡ','ㅡ','ㅡ','ㅡ','ㅡ','ㅡ','ㅡ','ㅡ','ㅡ','ㅡ','ㅡ','ㅡ','ㅡ','ㅡ','ㅡ','ㅡ','ㅡ','ㅡ','ㅡ','ㅡ','ㅡ','ㅡ','ㅡ','ㅡ','ㅡ','ㅡ','ㅡ','ㅡ','ㅡ','ㅡ','ㅡ','ㅡ','ㅡ','ㅡ','ㅡ','ㅡ','◎'},
                 {'｜','　','　','　','　','　','　','　','　','　','　','　','　','　','　','　','　','　','　','　','　','　','　','　','　','　','　','　','　','　','　','　','　','　','　','　','　','　','　','　','　','　','　','　','　','　','　','　','　','｜'},
@@ -50,7 +53,7 @@ static class Screen
             };
 
 
-    public static void RenderBasicMap()
+    public void RenderBasicMap()
     {
         for (int i = 0; i < screenMaxHeight; i++)
         {
@@ -63,13 +66,15 @@ static class Screen
         Console.SetCursorPosition(0, 0);
     }
 
-    public static void RenderRatengle(ScreenPosition pos,string[] s , bool isDircRight)
+    public void RenderRatengle(ScreenPosition pos,string[] s , bool isChoice = false)
     {
         if (s == null)
         {
             Debug.AddLog("Rendering NULL을 포함 시킬 수 없습니다.", true);
             return;
         }
+
+        
 
         string a = s[0];
         int maxLength = a.Length;
@@ -83,6 +88,10 @@ static class Screen
         for ( int i = 0; i < s.Length; i++)
         {
             a = s[i];
+            if (isChoice)
+            {
+                selecte.Add((a,null));
+            }
             s[i] = a.PadRight(maxLength);
         }
 
@@ -104,8 +113,7 @@ static class Screen
                 Renderer(p1, p2, ref s);
                 break;
             case ScreenPosition.CENTER:
-                p2 = new Pos(2, 2);
-                //p2 = new Pos(screenMaxWidth / 2, screenMaxHeight / 2) - (p1 / 2);
+                p2 = new Pos(screenMaxWidth / 2, screenMaxHeight / 2) - (p1 / 2);
                 Renderer(p1, p2, ref s);
                 break;
             case ScreenPosition.CENTERTOP:
@@ -131,7 +139,24 @@ static class Screen
         }
     }
 
-    static void Renderer(Pos p1, Pos p2, ref string[] s)
+    public void Selecte()
+    {
+
+    }
+
+    public void SelecteUp()
+    {
+        if(CurruntIndex == 0) return;
+        CurruntIndex--;
+    }
+
+    public void SelecteDown()
+    {
+        if (CurruntIndex >= selecte.Count) return;
+        CurruntIndex++;
+    }
+
+    void Renderer(Pos p1, Pos p2, ref string[] s)
     {
         string a;
         for (int i = 0;i < p1.Y;i++)

@@ -17,7 +17,8 @@ static class SceneManager
     {
         _Scenes = new Dictionary<string, Scene>();
         AddScene();
-        ChangeScene(_Scenes["MainMenu"]);
+        ChangeScene(_Scenes["GameScene"]);
+        //ChangeScene(_Scenes["MainMenu"]);
     }
 
     static public void Update()
@@ -28,6 +29,7 @@ static class SceneManager
     static public void AddScene()
     {
         _Scenes.Add("MainMenu", new MainMenuScene());
+        _Scenes.Add("GameScene", new GameScene());
     }
 
     public static void ChangeScene(Scene nextScene)
