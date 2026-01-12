@@ -16,12 +16,7 @@ class Army : Scene
      */
     Unit[] units;
 
-    string[] armys =
-    {
-        "종 류 ∴ 인력소모 ∴ 광물 소모 ∴ 생산수 ∴ 전투력",
-        "징집병 ∴ ",
-        "기 사 ∴ "
-    };
+    string[] armys = new string[3];
 
     public int conscript { get; private set; }
     public int knight { get; private set; }
@@ -33,14 +28,21 @@ class Army : Scene
 
     public override void Start()
     {
+        units = new Unit[2];
+        units[0] = new Conscript("징집병", 1, 10, 10, 1, 2);
+        units[1] = new Knight("기사", 50, 0, 1, 5, 10);
+
+        //일단... 작동 시켜야한다...
+        armys[0] = "종 류 ∴ 인 력 ∴ 광 물 ∴ 생산수 ∴ 전투력";
+        for(int i = 1; i < armys.Length; i++)
+        {
+            armys[i] = units[i-1].name.PadRight(3) + " ∴ " + units[i-1].useHumanResource.TranstoString().PadLeft(3) + " ∴ " + units[i - 1].useOre.TranstoString().PadLeft(3) + " ∴ " + units[i - 1].modify.TranstoString().PadLeft(3) + " ∴ " + units[i-1].combatRate.TranstoString().PadLeft(3);
+        }
+        
+
         string s;
         if (isSceneFirstIn)
         {
-            for (int i = 0; i < armys.Length; i++)
-            {
-                s = armys[i];
-                armys[i] = s.PadRight(9, '０');
-            }
             conscript = 10;
             screen.RenderBasicMap();
             screen.RenderRatengle(Screen.ScreenPosition.RIGHTCENTER, destination, true);
@@ -48,8 +50,7 @@ class Army : Scene
             screen.RenderRatengle(Screen.ScreenPosition.LEFTTOP, null,true);
             Render();
         }
-        units[0] = new Conscript("징집병", 1, 10, 10, 1, 2);
-        units[1] = new Knight("기사", 50, 0, 1, 5, 10);
+        
     }
 
     public override void Update()
@@ -60,7 +61,6 @@ class Army : Scene
     void Render()
     {
         
-
     }
 
     

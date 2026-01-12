@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Http.Headers;
+using System.Runtime.Remoting.Messaging;
 
 class Screen
 {
@@ -69,6 +71,19 @@ class Screen
         Console.SetCursorPosition(0, 0);
     }
 
+    /*public void RenderRatengleForUnits(ScreenPosition pos, Unit unit)
+    {
+        if (unit == null)
+        {
+            Debug.AddLog("Renderer에 null 값을 갖는 Unit을 넣을 수 없습니다.", true);
+        }
+
+        Pos p1 = new Pos(0,0);
+        Pos p2 = PosSelecter(pos,p1);
+
+        ChoiceRenderer(p1,p2);
+    }*/
+
     public void RenderRatengle(ScreenPosition pos,string[] s , bool isChoice = false)
     {
         if (s == null)
@@ -96,111 +111,44 @@ class Screen
             s[i] = a.PadRight(maxLength);
         }
 
-        
-
         Pos p1 = new Pos(maxLength + 2, s.Length + 2);
+
+        Pos p2 = PosSelecter(pos,p1);
+        listScreenStrings.Add((s, p1, p2));
+        if (isChoice)
+        {
+            listSelecte.Add(selecte);
+            ChoiceRenderer(p1, p2, s);
+        }
+        else
+            Renderer(p1, p2, s);
+    }
+
+    Pos PosSelecter(ScreenPosition pos, Pos p1)
+    {
         Pos p2;
         switch (pos)
         {
             case ScreenPosition.LEFTCENTER:
-                p2 = new Pos(0, screenMaxHeight / 2 - p1.Y / 2);
-                listScreenStrings.Add((s,p1,p2));
-                if (isChoice)
-                {
-                    listSelecte.Add(selecte);
-                    ChoiceRenderer(p1, p2, s);
-                }
-                else
-                    Renderer(p1, p2, s);
-                break;
+                return p2 = new Pos(0, screenMaxHeight / 2 - p1.Y / 2);
             case ScreenPosition.LEFTTOP:
-                p2 = new Pos(0, 0);
-                listScreenStrings.Add((s, p1, p2));
-                if (isChoice)
-                {
-                    listSelecte.Add(selecte);
-                    ChoiceRenderer(p1, p2, s);
-                }
-                else
-                    Renderer(p1, p2, s);
-                break;
+                return p2 = new Pos(0, 0);
             case ScreenPosition.LEFTBOTTOM:
-                p2 = new Pos(0, screenMaxHeight - p1.Y);
-                listScreenStrings.Add((s, p1, p2));
-                if (isChoice)
-                {
-                    listSelecte.Add(selecte);
-                    ChoiceRenderer(p1, p2, s);
-                }
-                else
-                    Renderer(p1, p2, s);
-                break;
+                return p2 = new Pos(0, screenMaxHeight - p1.Y);
             case ScreenPosition.CENTER:
-                p2 = new Pos(screenMaxWidth / 2, screenMaxHeight / 2) - (p1 / 2);
-                listScreenStrings.Add((s, p1, p2));
-                if (isChoice)
-                {
-                    listSelecte.Add(selecte);
-                    ChoiceRenderer(p1, p2, s);
-                }
-                else
-                    Renderer(p1, p2, s);
-                break;
+                return p2 = new Pos(screenMaxWidth / 2, screenMaxHeight / 2) - (p1 / 2);
             case ScreenPosition.CENTERTOP:
-                p2 = new Pos(screenMaxWidth / 2 - p1.X / 2, 0);
-                listScreenStrings.Add((s, p1, p2));
-                if (isChoice)
-                {
-                    listSelecte.Add(selecte);
-                    ChoiceRenderer(p1, p2, s);
-                }
-                else
-                    Renderer(p1, p2, s);
-                break;
+                return p2 = new Pos(screenMaxWidth / 2 - p1.X / 2, 0);
             case ScreenPosition.CENTERBOTTOM:
-                p2 = new Pos(screenMaxWidth / 2 - p1.X / 2, screenMaxHeight - p1.Y);
-                listScreenStrings.Add((s, p1, p2));
-                if (isChoice)
-                {
-                    listSelecte.Add(selecte);
-                    ChoiceRenderer(p1, p2, s);
-                }
-                else
-                    Renderer(p1, p2, s);
-                break;
+                return p2 = new Pos(screenMaxWidth / 2 - p1.X / 2, screenMaxHeight - p1.Y);
             case ScreenPosition.RIGHTCENTER:
-                p2 = new Pos(screenMaxWidth - p1.X, screenMaxHeight / 2 - p1.Y / 2);
-                listScreenStrings.Add((s, p1, p2));
-                if (isChoice)
-                {
-                    listSelecte.Add(selecte);
-                    ChoiceRenderer(p1, p2, s);
-                }
-                else
-                    Renderer(p1, p2, s);
-                break;
+                return p2 = new Pos(screenMaxWidth - p1.X, screenMaxHeight / 2 - p1.Y / 2);
             case ScreenPosition.RIGHTTOP:
-                p2 = new Pos(screenMaxWidth - p1.X, 0);
-                listScreenStrings.Add((s, p1, p2));
-                if (isChoice)
-                {
-                    listSelecte.Add(selecte);
-                    ChoiceRenderer(p1, p2, s);
-                }
-                else
-                    Renderer(p1, p2, s);
-                break;
+                return p2 = new Pos(screenMaxWidth - p1.X, 0);
             case ScreenPosition.RIGHTBOTTOM:
-                p2 = new Pos(screenMaxWidth - p1.X, screenMaxHeight - p1.Y);
-                listScreenStrings.Add((s, p1, p2));
-                if (isChoice)
-                {
-                    listSelecte.Add(selecte);
-                    ChoiceRenderer(p1, p2,s);
-                }
-                else
-                    Renderer(p1, p2,s);
-                break;
+                return p2 = new Pos(screenMaxWidth - p1.X, screenMaxHeight - p1.Y);
+            default:
+                return p2 = new Pos(0, 0);
         }
     }
 

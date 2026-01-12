@@ -56,11 +56,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scene\Scene.cs" />
     <Compile Include="Manager\SceneManager.cs" />
+    <Compile Include="Util\IntUtils.cs" />
     <Compile Include="Util\Observer.cs" />
     <Compile Include="Util\Position.cs" />
     <Compile Include="Util\StringUtils.cs" />
+    <Compile Include="Vilige\Conscript.cs" />
+    <Compile Include="Vilige\Knight.cs" />
     <Compile Include="Vilige\Structure.cs" />
-    <Compile Include="Vilige\units.cs" />
+    <Compile Include="Vilige\Units.cs" />
     <Compile Include="Vilige\WareHouse.cs" />
   </ItemGroup>
   <ItemGroup>
