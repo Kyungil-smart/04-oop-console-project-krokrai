@@ -14,7 +14,8 @@ static class InputManager
         ConsoleKey.RightArrow,
         ConsoleKey.Enter,
         ConsoleKey.Escape,
-        ConsoleKey.Clear
+        ConsoleKey.Clear,
+        ConsoleKey.Tab,
     };
 
     public static ConsoleKey currentKey { get; private set; }

@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Manager\InputManager.cs" />
+    <Compile Include="Scene\DominionScene.cs" />
     <Compile Include="Scene\GameScene.cs" />
     <Compile Include="Screen.cs" />
     <Compile Include="Util\Debug.cs" />

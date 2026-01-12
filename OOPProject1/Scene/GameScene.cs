@@ -12,7 +12,6 @@ class StatisSticsScene : Scene
 
     }
 
-    Screen screen = new Screen();
     WareHouse resource = new WareHouse();
 
     string[] staticstics = new string[] 
@@ -28,7 +27,7 @@ class StatisSticsScene : Scene
 
     public override void Exit()
     {
-        
+        screen = null;
     }
 
     public override void Start()
@@ -39,6 +38,10 @@ class StatisSticsScene : Scene
         {
             s = staticstics[i];
             staticstics[i] = s.PadRight(11,'０');
+        }
+        for (int i = 0; i < destination.Length; i++)
+        {
+            screen.AddSelect(destination[i], null);
         }
         screen.RenderRatengle(Screen.ScreenPosition.RIGHTTOP,staticstics);
         screen.RenderRatengle(Screen.ScreenPosition.RIGHTCENTER, destination,true);

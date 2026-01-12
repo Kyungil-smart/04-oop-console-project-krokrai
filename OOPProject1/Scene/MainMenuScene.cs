@@ -4,8 +4,6 @@ namespace OOPProject1
 {
     class MainMenuScene : Scene
     {
-        Screen screen = new Screen();
-
         public MainMenuScene()
         {
 
@@ -23,8 +21,8 @@ namespace OOPProject1
             if (isSceneFirstIn)
             {
                 isSceneFirstIn = false;
+                Render();
             }
-            Render();
             Update();
         }
 
@@ -41,7 +39,7 @@ namespace OOPProject1
 
         public override void Exit()
         {
-
+            screen = null;
         }
     }
 }

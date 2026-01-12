@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 abstract class Scene
 {
+    protected Screen screen = new Screen();
     protected string[] destination =
     {
         "통계",
