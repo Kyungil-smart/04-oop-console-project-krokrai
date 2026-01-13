@@ -23,7 +23,7 @@ class Army : Scene
 
     public override void Exit()
     {
-        
+        Console.Clear();
     }
 
     public override void Start()

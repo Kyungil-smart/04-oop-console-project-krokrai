@@ -65,7 +65,7 @@
     <Compile Include="Util\StringUtils.cs" />
     <Compile Include="Vilige\Conscript.cs" />
     <Compile Include="Vilige\Knight.cs" />
-    <Compile Include="Vilige\Structure.cs" />
+    <Compile Include="Scene\StructureScene.cs" />
     <Compile Include="Vilige\Units.cs" />
     <Compile Include="Vilige\WareHouse.cs" />
   </ItemGroup>

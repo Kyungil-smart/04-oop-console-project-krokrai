@@ -10,7 +10,7 @@ class ResearchScene : Scene
 
     public override void Exit()
     {
-        
+        Console.Clear();
     }
 
     public override void Start()
@@ -22,7 +22,7 @@ class ResearchScene : Scene
             screen.AddSelect(destination[i]);
         }
         screen.RenderBasicMap();
-        screen.RenderRatengle(Screen.ScreenPosition.LEFTTOP,research.Researchable());
+        screen.RenderRatengle(Screen.ScreenPosition.LEFTTOP,research.Researchable(),true);
         screen.RenderRatengle(Screen.ScreenPosition.RIGHTCENTER, destination, true);
     }
 

@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 class DominionScene : Scene
 {
-    Structure structure = new Structure();
+    StructureScene structure = new StructureScene();
     string[] list =
     {
-        "필요량 ∴ 나 무 ∴ 석 재 ∴ 금 화 ∴ 인 력",
+        "필요량 ∴ 나 무 ∴ 석 재 ∴ 금 화 ∴ 인 력 ∴ 건설됌",
         "농 장",
         "벌목장",
         "채석장",
@@ -59,7 +59,7 @@ class DominionScene : Scene
                 screen.SelecteDown();
                 break;
             case ConsoleKey.Enter:
-                structure.Construction( (Structure.Building) screen.Selecte());
+                structure.Construction( (StructureScene.Building) screen.Selecte());
                 break;
         }
     }

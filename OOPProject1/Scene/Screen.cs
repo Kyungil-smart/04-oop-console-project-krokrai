@@ -91,7 +91,7 @@ class Screen
             return;
         }
 
-        /*string a = s[0];
+        string a = s[0];
         int maxLength = a.Length;
 
         for (int i = 1; i < s.Length; i++)
@@ -104,9 +104,9 @@ class Screen
         {
             a = s[i];
             s[i] = a.PadRight(maxLength);
-        }*/
+        }
 
-        Pos p1 = new Pos(s[0].Length + 2, s.Length + 2);
+        Pos p1 = new Pos(maxLength + 2, s.Length + 2);
 
         Pos p2 = PosSelecter(pos,p1);
         listScreenStrings.Add((s, p1, p2));

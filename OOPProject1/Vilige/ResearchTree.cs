@@ -24,9 +24,9 @@ class ResearchTree
     {
         if (isRootResearch)
         {
-            return new string[1] {Root.name};
+            return new string[2] {"연구 목록",Root.name};
         }
-        return new string[2] { atc.name, util.name };
+        return new string[3] {"연구 목록", atc.name, util.name };
     }
 
     public void AddQueue()

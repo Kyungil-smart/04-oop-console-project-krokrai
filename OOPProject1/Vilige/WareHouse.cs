@@ -57,19 +57,24 @@ class WareHouse
                 Observer.SelecetInvoke("Gold");
                 break;
             case Resource.FOOD:
+                gold -= num;
+                Observer.SelecetInvoke("Food");
                 break;
             case Resource.WOOD:
-
+                gold -= num;
+                Observer.SelecetInvoke("Wood");
                 break;
             case Resource.STONE:
-
+                gold -= num;
+                Observer.SelecetInvoke("Stone");
                 break;
             case Resource.ORE:
                 ore -= num;
                 Observer.SelecetInvoke("Ore");
                 break;
             case Resource.SPECIALRESOURCE:
-
+                gold -= num;
+                Observer.SelecetInvoke("SpecialResource");
                 break;
             case Resource.HUMANRESOURCES:
                 humanResources -= num;

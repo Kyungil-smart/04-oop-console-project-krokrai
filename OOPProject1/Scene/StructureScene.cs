@@ -4,23 +4,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-class Structure
+class StructureScene
 {
     public enum Building
     { 
         FRAM, LUMBERCAMP, QUARRY, MINE, LABORATORY, ARMY, CASTLE, EXPEDITION, MARKET
     }
 
-    public Structure()
+    public StructureScene()
     {
         Init();
     }
 
     // 나 무  석 재  금 화  인 력
     public List<(int, int, int, int)> list = new List<(int, int, int, int)>();
-    public List<(int)> structure = new List<(int, )> ();
 
     WareHouse warehouse  = new WareHouse();
+
     public int fram { get; private set; }
     public int lumberCamp { get; private set; }
     public int quarry { get; private set; }
@@ -30,6 +30,8 @@ class Structure
     public int castle { get; private set; }
     public int expedition { get; private set; }
     public int market { get; private set; }
+
+    int[] a;
 
     public void Init()
     {
