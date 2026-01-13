@@ -9,11 +9,12 @@ namespace OOPProject1
 
         }
 
-        string[] Menus = new string[3]
+        string[] Menus = new string[4]
         { 
-            "게임 시작",
-            "크레딧",
-            "게임 종료"
+            "이름 없는 시뮬레이터",
+            "   게임 시작",
+            "   크레딧",
+            "   게임 종료"
         };
 
         public override void Start()
@@ -30,37 +31,12 @@ namespace OOPProject1
             Update();
         }
 
-        void Select()
-        {
-
-        }
-
-        public void Scene()
-        {
-
-        }
-
-        void SelectTrans()
-        {
-            screen.SelecteTrans();
-        }
-
-        void SelectUp()
-        {
-            screen.SelecteUp();
-        }
-
-        void SelectDown()
-        {
-            screen.SelecteDown();
-        }
-
         public override void Update()
         {
             switch (InputManager.currentKey)
             {
                 case ConsoleKey.Tab:
-                    SelectTrans();
+                    screen.SelecteTrans();
                     break;
                 case ConsoleKey.UpArrow:
                     screen.SelecteUp();
@@ -77,12 +53,12 @@ namespace OOPProject1
         void Render()
         {
             screen.RenderBasicMap();
-            screen.RenderRatengle(Screen.ScreenPosition.CENTER,Menus,false);
+            screen.RenderRatengle(Screen.ScreenPosition.CENTER,Menus,true);
         }
 
         public override void Exit()
         {
-            screen = null;
+            Console.Clear();
         }
     }
 }

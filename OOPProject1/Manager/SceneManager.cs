@@ -17,7 +17,7 @@ static class SceneManager
     {
         _Scenes = new Dictionary<string, Scene>();
         AddScene();
-        ChangeScene(_Scenes["통계"]);
+        ChangeScene(_Scenes["MainMenu"]);
         //ChangeScene(_Scenes["MainMenu"]);
     }
 

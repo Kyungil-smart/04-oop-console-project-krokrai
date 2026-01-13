@@ -24,7 +24,7 @@ class DominionScene : Scene
 
     public override void Exit()
     {
-        screen = null;
+        Console.Clear();
     }
 
     public override void Start()

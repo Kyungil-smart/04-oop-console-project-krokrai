@@ -165,7 +165,7 @@ class Screen
     {
         if ( CurruntArrayIndex == listSelecte.Count - 1 )
         {
-            SceneManager.ChangeScene(selecte[CurruntIndex]);
+            SceneManager.ChangeScene(selecte[CurruntIndex] == "게임 시작" ? "통계" : selecte[CurruntIndex]);
         }
         return CurruntIndex;
         //listSelecte[CurruntArrayIndex][CurruntIndex].Item2?.Invoke();
