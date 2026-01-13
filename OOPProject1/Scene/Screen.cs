@@ -8,13 +8,14 @@ class Screen
     public const int screenMaxHeight = 30;
     public const int screenMaxWidth = 50;
 
-    List<(string, Action)> selecte = new List<(string, Action)>();
-    List<List<(string, Action)>> listSelecte = new List<List<(string, Action)>>();
+    List<string> selecte = new List<string>();
+    List<List<string>> listSelecte = new List<List<string>>();
 
     List<(string[], Pos, Pos)> listScreenStrings = new List<(string[], Pos, Pos)>();
 
     public int CurruntIndex { get; private set; } = 1;
     public int CurruntArrayIndex { get; private set; } = 0;
+
 
     public enum ScreenPosition
     {
@@ -90,7 +91,7 @@ class Screen
             return;
         }
 
-        string a = s[0];
+        /*string a = s[0];
         int maxLength = a.Length;
 
         for (int i = 1; i < s.Length; i++)
@@ -102,14 +103,10 @@ class Screen
         for ( int i = 0; i < s.Length; i++)
         {
             a = s[i];
-            if (isChoice)
-            {
-                selecte.Add((a,null)); // 반드시 null을 수정할 것
-            }
             s[i] = a.PadRight(maxLength);
-        }
+        }*/
 
-        Pos p1 = new Pos(maxLength + 2, s.Length + 2);
+        Pos p1 = new Pos(s[0].Length + 2, s.Length + 2);
 
         Pos p2 = PosSelecter(pos,p1);
         listScreenStrings.Add((s, p1, p2));
@@ -150,9 +147,9 @@ class Screen
         }
     }
 
-    public void AddSelect(string s, Action action)
+    public void AddSelect(string s) // 여기 추가 필
     {
-        selecte.Add((s, action));
+        selecte.Add(s);
     }
 
     public void SelecteTrans()
@@ -164,15 +161,21 @@ class Screen
         ChoiceRenderer(listScreenStrings[CurruntArrayIndex].Item2, listScreenStrings[CurruntArrayIndex].Item3, listScreenStrings[CurruntArrayIndex].Item1);
     }
 
-    public void Selecte()
+    public int Selecte()
     {
-        listSelecte[CurruntArrayIndex][CurruntIndex].Item2?.Invoke();
+        if ( CurruntArrayIndex == listSelecte.Count - 1 )
+        {
+            SceneManager.ChangeScene(selecte[CurruntIndex]);
+        }
+        return CurruntIndex;
+        //listSelecte[CurruntArrayIndex][CurruntIndex].Item2?.Invoke();
     }
 
     public void SelecteUp()
     {
         if(CurruntIndex == 1) return;
         CurruntIndex--;
+        
         ChoiceRenderer(listScreenStrings[CurruntArrayIndex].Item2, listScreenStrings[CurruntArrayIndex].Item3, listScreenStrings[CurruntArrayIndex].Item1);
     }
 

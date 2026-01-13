@@ -17,7 +17,7 @@ static class SceneManager
     {
         _Scenes = new Dictionary<string, Scene>();
         AddScene();
-        ChangeScene(_Scenes["DominionScene"]);
+        ChangeScene(_Scenes["통계"]);
         //ChangeScene(_Scenes["MainMenu"]);
     }
 
@@ -29,11 +29,16 @@ static class SceneManager
     static public void AddScene()
     {
         _Scenes.Add("MainMenu", new MainMenuScene());
-        _Scenes.Add("GameScene", new StatisSticsScene());
-        _Scenes.Add("DominionScene", new DominionScene());
-        _Scenes.Add("ArmyScene", new Army());
-        _Scenes.Add("Expedition", new Expedition());
-        _Scenes.Add("Laboratory", new ResearchScene());
+        _Scenes.Add("통계", new StatisSticsScene());
+        _Scenes.Add("영지", new DominionScene());
+        _Scenes.Add("군대", new Army());
+        _Scenes.Add("탐사", new Expedition());
+        _Scenes.Add("연구", new ResearchScene());
+    }
+
+    public static void ChangeScene(string s)
+    {
+        ChangeScene(_Scenes[s]);
     }
 
     public static void ChangeScene(Scene nextScene)

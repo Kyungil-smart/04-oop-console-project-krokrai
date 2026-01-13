@@ -32,6 +32,12 @@ class Army : Scene
         units[0] = new Conscript("징집병", 1, 10, 10, 1, 2);
         units[1] = new Knight("기사", 50, 0, 1, 5, 10);
 
+
+        for (int i = 0; i < destination.Length; i++)
+        {
+            screen.AddSelect(destination[i]);
+        }
+
         //일단... 작동 시켜야한다...
         // 이 이전 모든 함수 재 작업 요망
         armys[0] = "종 류 ∴ 인 력 ∴ 광 물 ∴ 생산수 ∴ 전투력";
@@ -39,29 +45,37 @@ class Army : Scene
         {
             armys[i] = units[i-1].name.PadRight(3) + " ∴ " + units[i-1].useHumanResource.TranstoString().PadLeft(3) + " ∴ " + units[i - 1].useOre.TranstoString().PadLeft(3) + " ∴ " + units[i - 1].modify.TranstoString().PadLeft(3) + " ∴ " + units[i-1].combatRate.TranstoString().PadLeft(3);
         }
-        
 
-        string s;
         if (isSceneFirstIn)
         {
             conscript = 10;
             screen.RenderBasicMap();
-            screen.RenderRatengle(Screen.ScreenPosition.RIGHTCENTER, destination, true);
+            
             screen.RenderRatengle(Screen.ScreenPosition.LEFTTOP, armys,true);
-            Render();
+            screen.RenderRatengle(Screen.ScreenPosition.RIGHTCENTER, destination, true);
         }
         
     }
 
+
     public override void Update()
     {
-        
+        switch (InputManager.currentKey)
+        {
+            case ConsoleKey.Tab:
+                screen.SelecteTrans();
+                break;
+            case ConsoleKey.UpArrow:
+                screen.SelecteUp();
+                break;
+            case ConsoleKey.DownArrow:
+                screen.SelecteDown();
+                break;
+            case ConsoleKey.Enter:
+                screen.Selecte();
+                break;
+        }
     }
 
-    void Render()
-    {
-        
-    }
 
-    
 }

@@ -21,14 +21,57 @@ namespace OOPProject1
             if (isSceneFirstIn)
             {
                 isSceneFirstIn = false;
+                for (int i = 0; i < destination.Length; i++)
+                {
+                    screen.AddSelect(destination[i]);
+                }
                 Render();
             }
             Update();
         }
 
-        public override void Update()
+        void Select()
+        {
+
+        }
+
+        public void Scene()
+        {
+
+        }
+
+        void SelectTrans()
+        {
+            screen.SelecteTrans();
+        }
+
+        void SelectUp()
         {
             screen.SelecteUp();
+        }
+
+        void SelectDown()
+        {
+            screen.SelecteDown();
+        }
+
+        public override void Update()
+        {
+            switch (InputManager.currentKey)
+            {
+                case ConsoleKey.Tab:
+                    SelectTrans();
+                    break;
+                case ConsoleKey.UpArrow:
+                    screen.SelecteUp();
+                    break;
+                case ConsoleKey.DownArrow:
+                    screen.SelecteDown();
+                    break;
+                case ConsoleKey.Enter:
+                    screen.Selecte();
+                    break;
+            }
         }
 
         void Render()

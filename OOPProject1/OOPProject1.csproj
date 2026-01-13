@@ -49,7 +49,7 @@
     <Compile Include="Scene\Army.cs" />
     <Compile Include="Scene\DominionScene.cs" />
     <Compile Include="Scene\Expedition.cs" />
-    <Compile Include="Scene\GameScene.cs" />
+    <Compile Include="Scene\StatisSticsScene.cs" />
     <Compile Include="Scene\ResearchScene.cs" />
     <Compile Include="Scene\Screen.cs" />
     <Compile Include="Util\Debug.cs" />
